@@ -1,26 +1,26 @@
 import Head from "next/head";
+import Link from 'next/link'
+
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import FeedbackForm from "@components/FeedbackForm";
-import JokeBlock from "@components/JokeBlock";
+import Navbar from "@components/Navbar";
+
 
 export default function Home() {
   return (
-    <div className="container">
+    <div className=" h-screen bg-purple-900 text-white">
       <Head>
-        <title>Next.js Toolbox</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Cole Foster</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😻</text></svg>"/>
       </Head>
-
-      <main>
-        <Header title="Next.js Toolbox" />
+    <Navbar />
+      <main> 
+        <Header title="Cole Foster" />
+       
         <hr />
-        <p className="description">
-          Here's an example of a Netlify Form! When you fill this out, the
-          submissions can be found in the Netlify Admin site.
-        </p>
-        <FeedbackForm />
-        <JokeBlock />
+        <h1 className="text-xl text-center first-letter:font-bold underline">
+          <Link href="/particles">Pretty Particles</Link>
+        </h1>
       </main>
       <Footer />
     </div>
