@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
+import JeopardyWidget from "@components/JeopardyWidget";
 
 
 export default function Home() {
@@ -18,9 +19,9 @@ export default function Home() {
         <Header title="Cole Foster" />
        
         <hr />
-        <h1 className="text-xl text-center first-letter:font-bold underline">
-          <Link href="/particles">Pretty Particles</Link>
-        </h1>
+        <div className="text-white text-5xl text-center font-bold " >
+          <JeopardyWidget/>
+        </div>
       </main>
       <Footer />
     </div>
