@@ -33,7 +33,7 @@ function JeopardyWidget() {
                 <li className="py-4"/>
                 {data.sort((a, b) => a.value - b.value).map(question => ( 
                     
-                   <li className="py-4" onClick={alert(question.clue)}> {question.value} </li>
+                   <li className="py-4" > {question.value} </li>
                 ))}
                 </ul>
             </div>
