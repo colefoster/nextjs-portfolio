@@ -27,3 +27,18 @@ hr {
   width: 100%;
 }
 
+@font-face {
+  font-family: "clue";
+  src: url('../public/fonts/Clue-Korinna-Regular.woff2') format("woff2");
+  src: url('../public/fonts/Clue-Korinna-Regular.woff') format("woff");
+}
+@font-face {
+  font-family: "category";
+  src: url('../public/fonts/Cat-Swiss921-BT.woff2') format("woff2");
+  src: url('../public/fonts/Cat-Swiss921-BT.woff') format("woff");
+}
+@font-face {
+  font-family: "dollar";
+  src: url('../public/fonts/Dollar-swiss911-uc.woff2') format("woff2");
+  src: url(../public/fonts/Dollar-swiss911-uc.woff) format("woff");
+}

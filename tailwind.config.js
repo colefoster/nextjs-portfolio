@@ -8,6 +8,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      dollar: ["dollar", "sans"],
+      clue: ["clue", "sans"],
+      category: ["category", "sans"],
+    },
+
   },
   plugins: [],
   mode: 'jit',
