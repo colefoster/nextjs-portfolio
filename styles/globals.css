@@ -20,7 +20,7 @@ main {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  max-width: 60ch;
+  max-width: 80ch;
 }
 
 hr {
@@ -41,4 +41,27 @@ hr {
   font-family: "dollar";
   src: url('../public/fonts/Dollar-swiss911-uc.woff2') format("woff2");
   src: url(../public/fonts/Dollar-swiss911-uc.woff) format("woff");
+}
+
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(9, 28, 41);
+  border-radius: 14px;
+  border: 0px solid black;
 }

@@ -8,8 +8,8 @@ function Navbar() {
 
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" className="flex items-center">
-            <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="20 0 100 100"><text y=".9em" font-size="90">😻</text></svg>
-            <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="20 0 100 100"><text y=".9em" font-size="90">🐶 </text></svg>
+            <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="20 0 100 100"><text y=".9em" fontSize="90">😻</text></svg>
+            <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="20 0 100 100"><text y=".9em" fontSize="90">🐶 </text></svg>
 
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Cole Foster</span>
             </a>
@@ -35,11 +35,11 @@ function Navbar() {
                             <a href="/emojis" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Emojis</a>
                           </li>
                           <li>
-                            <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                            <a href="/tf" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">TensorFlow Examples</a>
                           </li>
                         </ul>
                         <div className="py-1">
-                          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Sign out</a>
+                          <a href="/playground" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Playground</a>
                         </div>
                     </div>
                 </li>

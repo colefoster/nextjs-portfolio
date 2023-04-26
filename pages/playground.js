@@ -3,7 +3,7 @@ import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
-import JeopardyWidget from "@components/JeopardyWidget";
+import Playground from "@components/Playground";
 
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
        
         <hr />
         <div className="text-white text-5xl text-center font-bold " >
-          <JeopardyWidget/>
+          <Playground/>
         </div>
       </main>
       <Footer />
