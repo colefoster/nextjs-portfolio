@@ -99,7 +99,7 @@ export default function ParticlesBackground  ()  {
     return (
         <>
         <div style={{
-            zIndex: -1,
+            zIndex: -100,
         }}>
         <Particles
         id="tsparticles"

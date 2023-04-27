@@ -39,9 +39,10 @@ function JeopardyWidget() {
                     <hr/>
                         <br />
                     <div className="-my-5 divide-y divide-gray-200 dark:divide-gray-700">
-                        {data.sort((a, b) => a.value - b.value).map(question => ( 
+                        {/**NEED TO ADD KEY FOR LIST ITEM TO REMOVE ERROR  */}
+                        {data.sort((a, b) => a.value - b.value).map((question, index) => ( 
                             
-                        <JeopardyQuestion question={question} />
+                            <JeopardyQuestion key={index} question={question} />
                         ))}
                     </div>
                 </div>

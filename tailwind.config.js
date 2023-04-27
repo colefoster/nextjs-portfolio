@@ -7,15 +7,24 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        fadeOut: {
+          'from': { opacity : '1' },
+          'to': { opacity: '0' },
+        },
+      
+    },
     fontFamily: {
       dollar: ["dollar", "sans"],
       clue: ["clue", "sans"],
       category: ["category", "sans"],
     },
-
+  }
   },
-  plugins: [],
+  plugins: [ 
+    
+  ],
   mode: 'jit',
 }
 
