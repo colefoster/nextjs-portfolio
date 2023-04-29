@@ -1,18 +1,15 @@
 import '@styles/globals.css'
-import { PageSettingsProvider } from '../contexts/PageSettingsContext';
+import { SettingsProvider } from '../contexts/settingsContext';
+
 
 function Application({ Component, pageProps }) {
-  
-
-  const settings={
-    title: 'Base Settings',
-    elements: [<p>None</p>],
-  }
-
   return (
-    <PageSettingsProvider settings={settings}>
-      <Component {...pageProps} baseSettings={settings} />
-    </PageSettingsProvider>
+    <SettingsProvider>
+
+      <Component {...pageProps}/>
+
+    </SettingsProvider>
+
   );
 }
 

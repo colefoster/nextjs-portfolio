@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import OpenAIAPICaller from './OpenAIAPICaller';
+import PersonalitySettings from '@components/playground/PersonalitySettings';
+import dynamic from 'next/dynamic';
+const ReactAnimatedEllipsis = dynamic(() => import('react-animated-ellipsis'), { ssr: false });
 
 function ChatWindow(props) {
     const [lastMessageTime, setLastMessageTime] = useState(0); // the time of the user message
@@ -59,8 +62,8 @@ useEffect(() => {
       />
 
 
-        <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-1/2">
-            <div className="flex text-center sm:items-center justify-between py-3 border-b-2 border-gray-200">
+        <div className="flex-1   sm:pb-4 justify-between  border-black border-2 bg flex flex-col h-1/2 ">
+            <div className="flex text-center sm:items-center justify-between py-3 sm:px-6 border-b-2 border-gray-200 bg-indigo-700">
                 <div className="relative flex items-center space-x-3">
                     <div className="relative h-20 w-20">
                         <span className="absolute text-green-500 right-0 bottom-0">{/* green dot to indicate online status */}
@@ -79,19 +82,16 @@ useEffect(() => {
                         <div className="text-2xl mt-1 flex items-center">
                         <span className="text-white mr-3 text-center">{currentPersonality.name}</span>
                         </div>
-                        <span className="text-lg text-gray-500">{currentPersonality.description}</span>
+                        <span className="text-lg text-gray-300">{currentPersonality.description}</span>
                     </div>
                 </div>
                 <div className="flex items-center space-x-2">
                     
-                    <button type="button" className="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                        </svg>
-                    </button>
+                    <PersonalitySettings personality={currentPersonality} />
+                    
                 </div>
             </div>
-            <div id="messages" className=" h-80  max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+            <div id="messages" className=" h-80  max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-indigo-900">
             {userMessages.map((message, index) => {
                 return (
                 <div key={`div1-${index}`}>
@@ -105,8 +105,19 @@ useEffect(() => {
                         </div>
                     <div className="chat-message">
                         <div className="flex items-end">
-                            <div className="flex flex-col space-y-2 text-lg max-w-xs mx-2 order-1 items-start -translate-y-4">
-                                <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{assistantMessages[index]}</span></div>
+                            <div className="flex flex-col mt-3 space-y-2 text-lg max-w-xs mx-2 order-1 items-start -translate-y-4">
+                                <div>
+                                    <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
+                                    {assistantMessages[index] === undefined ? (
+                                        <ReactAnimatedEllipsis 
+                                        fontSize="2rem"
+                                        marginLeft="5px"
+                                        spacing="0.3rem"/>
+                                        ) : (
+                                        assistantMessages[index]
+                                    )}
+                                    </span>
+                                </div>
                             </div>
                             <svg className="h-16 " xmlns="http://www.w3.org/2000/svg" viewBox="1 0 10 10"><text y=".9em" fontSize="9">{currentPersonality.icon}</text></svg>
                         </div>
@@ -119,7 +130,9 @@ useEffect(() => {
             <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0 text-lg">
                 <div className="relative flex pr-28">
                     
-                    <input id="userMessageInput"
+                    <input 
+                    id="userMessageInput"
+                    autoComplete="off"
                     type="text" 
                     placeholder="Write your message!" 
                     className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-4 pr-4 bg-gray-200 rounded-md py-3"

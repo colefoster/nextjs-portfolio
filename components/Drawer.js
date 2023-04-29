@@ -1,10 +1,9 @@
+import EmojiPicker from 'emoji-picker-react';
 import React, { useState } from 'react';
-import { usePageSettings } from '../contexts/PageSettingsContext';
 
 function Drawer() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [areSettingsExpanded, setAreSettingsExpanded] = useState(false);
-    const settings = usePageSettings();
 
     const toggleShowDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);
@@ -39,10 +38,10 @@ function Drawer() {
 
             <div className="mt-6">
                 <button className="settings-button" onClick={toggleSettingsExpanded}>
-                    Show {settings.title} Settings
+                    Show Settings
                 </button>
                 <div className={`off-canvas-menu ${areSettingsExpanded ? 'block' : 'hidden'}`}>
-                    {settings.elements.map((element) => element)}
+                    <button>I'm a button</button>
 
                 </div>
             </div>  

@@ -5,28 +5,23 @@ import React, {useState, useEffect} from 'react';
 function DropdownRadio(props) {
   const [selectedOption, setSelectedOption] = useState(props.options[0]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);  //To prevent the dropdown from fading out on first render
 
-  useEffect(() => {
-    console.log("has mounted, setting to true")
-    setTimeout(()=>{setHasMounted(true)}, 1000);
-  }, []);
+  
 
   
   const handleDropdownClick = () => {
-    console.log("handleDropdownClick");
     setShowDropdown(!showDropdown);
   };
 
   const handleOptionChange = (changeEvent) => {
     setSelectedOption(props.options[changeEvent.target.value]);
-    setTimeout(() =>{setShowDropdown(false)}, 10);
     props.updatePersonalityFunction(props.options[changeEvent.target.value]);
+    setShowDropdown(false)
   };
 
 
   return (
-    <div className="relative">
+    <div className="relative pb-3">
       {/* Dropdown button */}
       <button
         id="dropdownRadioButton"
@@ -52,7 +47,7 @@ function DropdownRadio(props) {
       
       <div
         id="dropdownRadio"
-        className={`${showDropdown ? '' : ' opacity-0 '} ${hasMounted && !showDropdown ? ' animate-[fadeOut_0.5s_ease-in-out] ' :'  '}   -translate-x-1/2 left-1/2 w-2/3 absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}>
+        className={`${showDropdown ? '' : ' hidden '}   -translate-x-1/2 left-1/2 w-2/3 absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}>
         <ul className="p-3 space-y-1 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioHelperButton">
           
           {props.options.map((option, index) => (

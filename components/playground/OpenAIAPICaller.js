@@ -1,28 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { Configuration, OpenAIApi } from "openai";
 
 function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages, personality, lastMessageTime}) {
-  const [messageHistory, setMessageHistory] = useState([]);
   const [currentPersonality, setCurrentPersonality] = useState(personality);
-
   useEffect(() => {
     if (userMessage) {
-        console.log("userMessage: ", userMessage)
-      // Call the API here
-      fetch(`https://reqres.in/api/unknown/${currentPersonality.tempIndex}`)
-        .then(async(response) => {
-            const res = await response.json();
-            console.log("res: ", res)
-            setAssistantMessages([...assistantMessages, res.data.name]);
-            setMessageHistory((prevHistory) => [
-            ...prevHistory,
-            { userMessage, assistantMessage: res.data.name },
-          ]);
-        })
-        
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-        });
+          
+        fetchResponse();      
     }
+
+    async function fetchResponse() {
+        try {
+          const response = await fetch("/api/openai", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userMessage }),
+          });
+          const data = await response.json();
+          const assistantMessage = (data.completion.choices[0].message.content);
+          // Update the assistantMessages state with the API response
+          setAssistantMessages([...assistantMessages, assistantMessage]);
+
+        } catch (error) {
+          console.error("Error fetching API response:", error);
+        }
+      }
   }, [userMessage, lastMessageTime]);
 
 
