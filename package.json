@@ -27,6 +27,7 @@
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-animated-ellipsis": "^1.0.0",
+    "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-simple-badges": "^4.2.0",
     "react-tsparticles": "^2.9.3",

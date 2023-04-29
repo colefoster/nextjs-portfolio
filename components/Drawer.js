@@ -1,17 +1,16 @@
-import EmojiPicker from 'emoji-picker-react';
 import React, { useState } from 'react';
-
+import { useSettings } from '../contexts/PersonalitySettingsContext';
+import EmojiPickerWrapper from './EmojiPickerWrapper';
 function Drawer() {
+    const { settings, updateSettings } = useSettings();
+
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [areSettingsExpanded, setAreSettingsExpanded] = useState(false);
 
     const toggleShowDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);
     }
 
-    const toggleSettingsExpanded = () => {
-        setAreSettingsExpanded(!areSettingsExpanded);
-    }
+    
     
     return (
         <>
@@ -36,14 +35,14 @@ function Drawer() {
             </button>
         
 
-            <div className="mt-6">
-                <button className="settings-button" onClick={toggleSettingsExpanded}>
-                    Show Settings
-                </button>
-                <div className={`off-canvas-menu ${areSettingsExpanded ? 'block' : 'hidden'}`}>
-                    <button>I'm a button</button>
 
-                </div>
+            <div className="mt-6">
+                <div className="flex items-center justify-between overflow-auto ">
+                    <span className="text-2xl ">User Icon:</span>
+                    <EmojiPickerWrapper size={"large"} extraClasses={"z-20 -translate-x-3/4 absolute overflow-auto"} defaultValue={settings.userIcon} onEmojiClick={(event, emojiObject) => {
+                        updateSettings({userIcon: emojiObject.emoji});
+                    }}/>
+                    </div>
             </div>  
         </div>
         </>

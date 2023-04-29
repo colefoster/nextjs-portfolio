@@ -1,5 +1,5 @@
 import '@styles/globals.css'
-import { SettingsProvider } from '../contexts/settingsContext';
+import { SettingsProvider } from '../contexts/PersonalitySettingsContext';
 
 
 function Application({ Component, pageProps }) {

@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Drawer from '@components/Drawer';
+import { useSettings } from '../contexts/PersonalitySettingsContext';
 function Navbar({}) {
+  const { settings, updateSettings } = useSettings();
+
     const [showPagesDropdown, setShowPagesDropdown] = useState(false);
 
     const togglePagesDropdown = () => {
@@ -21,8 +24,7 @@ function Navbar({}) {
 
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" className="flex items-center">
-            <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="20 0 100 100"><text y=".9em" fontSize="90">😻</text></svg>
-            <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="20 0 100 100"><text y=".9em" fontSize="90">🐶 </text></svg>
+            <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="15 0 100 100"><text y=".9em" fontSize="90">{settings.userIcon}</text></svg>
 
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Cole Foster</span>
             </a>

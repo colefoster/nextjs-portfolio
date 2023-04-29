@@ -1,25 +1,20 @@
 import React, {useState, useEffect} from 'react';
 
+import { useSettings } from '../../contexts/PersonalitySettingsContext';
 
-
-function DropdownRadio(props) {
-  const [selectedOption, setSelectedOption] = useState(props.options[0]);
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  
-
-  
-  const handleDropdownClick = () => {
-    setShowDropdown(!showDropdown);
-  };
+function DropdownRadio() {
+  const { settings, updateSettings } = useSettings(); 
 
   const handleOptionChange = (changeEvent) => {
-    setSelectedOption(props.options[changeEvent.target.value]);
-    props.updatePersonalityFunction(props.options[changeEvent.target.value]);
+    updateSettings({selectedPersonality : Number(changeEvent.target.value)});
     setShowDropdown(false)
   };
 
-
+  const [showDropdown, setShowDropdown] = useState(false);  
+  const handleDropdownClick = () => {
+    setShowDropdown(!showDropdown);
+  };
+console.log(settings.selectedPersonality);
   return (
     <div className="relative pb-3">
       {/* Dropdown button */}
@@ -50,7 +45,7 @@ function DropdownRadio(props) {
         className={`${showDropdown ? '' : ' hidden '}   -translate-x-1/2 left-1/2 w-2/3 absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}>
         <ul className="p-3 space-y-1 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioHelperButton">
           
-          {props.options.map((option, index) => (
+          {settings.personalities.map((option, index) => (
             <li key={option.name}>
               <div className="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" >
                 <div className="flex items-center h-5" >
@@ -58,7 +53,7 @@ function DropdownRadio(props) {
                     id={`helper-radio-${index}`}
                     name="helper-radio"
                     type="radio"
-                    checked={selectedOption === option}
+                    checked={settings.selectedPersonality===index}
                     value={index}
                     onChange={handleOptionChange}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"

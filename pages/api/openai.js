@@ -1,7 +1,9 @@
 import { Configuration, OpenAIApi } from "openai";
 
 export default async function handler(req, res) {
-  const { userMessage } = req.body;
+
+  
+  const { userMessage, prompt } = req.body;
 
   const apiKey = process.env.OPEN_AI_API_KEY;
   const configuration = new Configuration({
@@ -14,7 +16,7 @@ export default async function handler(req, res) {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [
-        { role: "system", content: "" },
+        { role: "system", content: prompt || "" },
         { role: "user", content: `${userMessage}` },
       ],
       max_tokens: 150,

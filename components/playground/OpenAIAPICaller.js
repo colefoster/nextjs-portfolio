@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Configuration, OpenAIApi } from "openai";
+import { useSettings } from '../../contexts/PersonalitySettingsContext';
 
-function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages, personality, lastMessageTime}) {
-  const [currentPersonality, setCurrentPersonality] = useState(personality);
+function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,  lastMessageTime}) {
+  
+  const { settings, updateSettings } = useSettings();
   useEffect(() => {
     if (userMessage) {
           
@@ -10,13 +12,14 @@ function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,
     }
 
     async function fetchResponse() {
+      const prompt = settings.personalities[settings.selectedPersonality].systemPrompt;
         try {
           const response = await fetch("/api/openai", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ userMessage }),
+            body: JSON.stringify({ userMessage, prompt }),
           });
           const data = await response.json();
           const assistantMessage = (data.completion.choices[0].message.content);
@@ -30,12 +33,7 @@ function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,
   }, [userMessage, lastMessageTime]);
 
 
-  useEffect(() => {
-    if (personality !== currentPersonality) {
-        setCurrentPersonality(personality);
-
-    }
-  }, [personality]);
+  
 
 
 
