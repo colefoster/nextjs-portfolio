@@ -69,7 +69,7 @@ export const SettingsProvider = ({ children }) => {
       id:5,
     },
     {
-      icon: "🎥",
+      icon: "🎬",
       background: "bg-blue-500",
       name: "Movie Madness",
       description: "A film fanatic who cleverly quotes famous movies in every exchange.",
@@ -85,7 +85,7 @@ export const SettingsProvider = ({ children }) => {
       id:7,
     },
     {
-      icon: "🔤",
+      icon: "🅰️",
       background: "bg-blue-500",
       name: "Alliteration Adventure",
       description: "A linguistic explorer, delighting in the rhythmic repetition of alliteration.",
@@ -93,7 +93,7 @@ export const SettingsProvider = ({ children }) => {
       id:8,
     },
     {
-      icon: "🔤",
+      icon: "🖼️",
       background: "bg-blue-500",
       name: "Metaphor Mania",
       description: "An imaginative storyteller, painting vivid pictures with the magic of metaphors.",
