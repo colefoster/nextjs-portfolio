@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+const axios = require('axios');
 import { useSettings } from '../../contexts/PersonalitySettingsContext';
 
 function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,  lastMessageTime}) {
@@ -14,15 +14,15 @@ function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,
     async function fetchResponse() {
       const prompt = settings.personalities[settings.selectedPersonality].systemPrompt;
         try {
-          const response = await fetch("/api/openai", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userMessage, prompt }),
+          const response = await axios.get("/api/openai", {
+            params: {
+              userMessage:userMessage,
+              prompt:prompt,
+            }
           });
-          const data = await response.json();
-          const assistantMessage = (data.completion);
+          console.log(response.data.completion)
+          
+          const assistantMessage = (response.data.completion);
           // Update the assistantMessages state with the API response
           setAssistantMessages([...assistantMessages, assistantMessage]);
 

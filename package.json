@@ -20,6 +20,7 @@
   "dependencies": {
     "@swc/helpers": "^0.5.0",
     "@tensorflow/tfjs": "^4.4.0",
+    "axios": "^1.4.0",
     "cypress": "^10.0.3",
     "emoji-picker-react": "^4.4.9",
     "html-react-parser": "^3.0.16",
