@@ -6,6 +6,7 @@ export default async function handler(req, res) {
   const { userMessage, prompt } = req.body;
 
   const apiKey = process.env.OPEN_AI_API_KEY;
+  console.log(process.env)
   const configuration = new Configuration({
     organization: "org-QuAbMjgiJ0XJzR2aYWCQj9Jz",
     apiKey: apiKey,
@@ -22,6 +23,7 @@ export default async function handler(req, res) {
       max_tokens: 150,
       temperature: 0.9,
     });
+    console.log(completion)
 
     res.status(200).json({ completion: completion.data });
   } catch (error) {
