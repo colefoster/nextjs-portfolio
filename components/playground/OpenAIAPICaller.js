@@ -22,7 +22,7 @@ function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,
             body: JSON.stringify({ userMessage, prompt }),
           });
           const data = await response.json();
-          const assistantMessage = (data.completion.choices[0].message.content);
+          const assistantMessage = (data.completion);
           // Update the assistantMessages state with the API response
           setAssistantMessages([...assistantMessages, assistantMessage]);
 
