@@ -61,6 +61,7 @@ function ChatWindow(props) {
         lastMessageTime={lastMessageTime}
         setAssistantMessages={setAssistantMessages}
         assistantMessages={assistantMessages}
+        userMessages={userMessages}
       />
         {/** I have the personality's background field injected into its icon's classname, to facilitate changing its background color */}
         {/**But tailwind.css does not include classes that it detects you are not using, so I have to first define them in this invisible div */}

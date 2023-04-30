@@ -2,9 +2,10 @@ import { Configuration, OpenAIApi } from "openai";
 
 export default async function handler(req, res) {
 
-  const userMessage = req.query.userMessage;
-  const prompt = req.query.prompt;
   
+  
+  const { messages } = req.body;
+
   const apiKey = process.env.OPEN_AI_API_KEY;
   
   const configuration = new Configuration({
@@ -16,11 +17,8 @@ export default async function handler(req, res) {
   try {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [
-        { role: "system", content: prompt || "" },
-        { role: "user", content: `${userMessage}` },
-      ],
-      max_tokens: 150,
+      messages: messages,
+      max_tokens: 250,
       temperature: 0.9,
     });
     
