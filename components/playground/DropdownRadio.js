@@ -67,6 +67,11 @@ console.log(settings.selectedPersonality);
                     </p>
                   </label>
                 </div>
+
+                <div className="emoji-column ml-4 text-xl">
+                  <span>{option.icon}</span>
+                </div>
+
               </div>
             </li>))}
         </ul>

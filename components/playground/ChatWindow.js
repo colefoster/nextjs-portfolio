@@ -8,6 +8,8 @@ const ReactAnimatedEllipsis = dynamic(() => import('react-animated-ellipsis'), {
 function ChatWindow(props) {
     const { settings, updateSettings } = useSettings();
 
+    const personality = settings.personalities[settings.selectedPersonality];
+
     const [lastMessageTime, setLastMessageTime] = useState(0); // the time of the user message
 
     const [userMessage, setUserMessage] = useState('');
@@ -15,6 +17,11 @@ function ChatWindow(props) {
     const [assistantMessages, setAssistantMessages] = useState([]);
 
 
+    useEffect(() => {
+
+        setAssistantMessages([]); // clear the assistant messages array when the personality is changed
+        setUserMessages([]); // clear the user messages array when the personality is changed
+    }, [personality]);
     const handleKeyDown = (event) => {
         if (event.key === "Enter") {
             sendUserMessage();
@@ -58,7 +65,7 @@ function ChatWindow(props) {
         {/** I have the personality's background field injected into its icon's classname, to facilitate changing its background color */}
         {/**But tailwind.css does not include classes that it detects you are not using, so I have to first define them in this invisible div */}
         {/**In order to get the classes to be included in the build */}
-        <div className="hidden bg-red-500 bg-green-500 bg-orange-500 bg-black bg-blue-500 "/>
+        <div className="hidden bg-red-500 bg-green-500 bg-orange-500 bg-black bg-blue-500 bg-fuchsia-600"/>
 
         <div className="flex-1   sm:pb-4 justify-between  border-black border-2 bg flex flex-col ">
             <div className="flex text-center sm:items-center justify-between py-3 sm:px-6 border-b-2 border-gray-200 bg-indigo-700">

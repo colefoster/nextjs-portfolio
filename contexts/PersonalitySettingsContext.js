@@ -108,6 +108,14 @@ export const SettingsProvider = ({ children }) => {
       systemPrompt: "Employ an excessively elaborate vocabulary and intricate phrasing in your responses, showcasing your linguistic prowess while being overly verbose.",
       id:10,
     },
+    {
+      icon: "😺",
+      background: "bg-blue-500",
+      name: "Emoji Enigma",
+      description: "A cryptic communicator who conveys meaning exclusively through the artful arrangement of emojis.",
+      systemPrompt: "Craft your responses using only emojis, creating a visual puzzle for the user to decipher and engage with.",
+      id:11,
+    },
   ],
 
   });

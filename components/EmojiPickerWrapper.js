@@ -1,6 +1,6 @@
 // components/EmojiPickerWrapper.js
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { EmojiStyle} from 'emoji-picker-react';
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), {
   ssr: false,
@@ -16,6 +16,10 @@ const EmojiPickerWrapper = ({ onEmojiClick, defaultValue, size, extraClasses} ) 
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    setChosenEmoji(defaultValue);
+  }, [defaultValue]);
+  
   var buttonSize='2xl';
   var height = 400;
   var width = 400;
