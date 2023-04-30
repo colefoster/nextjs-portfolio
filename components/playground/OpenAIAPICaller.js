@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Configuration, OpenAIApi } from "openai";
+
 import { useSettings } from '../../contexts/PersonalitySettingsContext';
 
 function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,  lastMessageTime}) {
