@@ -21,7 +21,7 @@ export default function Home() {
         <Header title="Cole Foster" />
        
         <hr />
-        <Link href="/playground" > <div className="text-4xl m-20 text-center font-bold text-blue-500 ">Check out my AI Personality Playground</div></Link>
+        <Link href="/playground" > <div className="text-4xl rounded-full m-20 hover:bg-gradient-to-l hover:from-pink-700 hover:to-fuchsia-700  bg-gradient-to-r hover:shadow-2xl from-pink-500 to-fuchsia-500 text-center font-bold hover:text-slate-600 text-white p-10">Check out my AI Personality Playground</div></Link>
         <hr />
         <div className="text-white text-5xl text-center font-bold -z-100" >
           <JeopardyWidget/>
