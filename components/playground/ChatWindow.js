@@ -78,7 +78,6 @@ function ChatWindow(props) {
                         </span>
 
                         {/* the personality icon */}
-                        {console.log(settings.personalities[settings.selectedPersonality].background)}
                         <svg className={`${settings.personalities[settings.selectedPersonality].background} h-20 w-20 rounded-3xl`} xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 12 12" fill="currentColor"><text y=".9em" fontSize="9">{settings.personalities[settings.selectedPersonality].icon}</text></svg>      
  
                    

@@ -14,7 +14,6 @@ function DropdownRadio() {
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
-console.log(settings.selectedPersonality);
   return (
     <div className="relative pb-3">
       {/* Dropdown button */}

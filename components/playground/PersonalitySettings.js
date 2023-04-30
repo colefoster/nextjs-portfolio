@@ -67,7 +67,6 @@ function PersonalitySettings(props) {
                 <div className="flex ">
                     <label className="mr-2 mb-10">Icon:</label>
                     <div className="absolute right-6 -translate-x-1/2">
-                        {console.log(settings.personalities[settings.selectedPersonality].icon)}
                         <EmojiPickerWrapper extraClasses="-translate-x-3/4" defaultValue={settings.personalities[settings.selectedPersonality].icon} onEmojiClick={handleEmojiClick} />
                     </div>
                 </div>
