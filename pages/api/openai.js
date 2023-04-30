@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   
   const configuration = new Configuration({
     organization: "org-QuAbMjgiJ0XJzR2aYWCQj9Jz",
-    apiKey: apiKey,
+    apiKey: "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",
   });
   const openai = new OpenAIApi(configuration);
 

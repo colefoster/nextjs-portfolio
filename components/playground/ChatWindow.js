@@ -48,7 +48,7 @@ function ChatWindow(props) {
     }
 
     const apiKey = process.env.OPEN_AI_API_KEY;
-    console.log(apiKey)
+    console.log(process.env)
     return (
         <>
         <OpenAIAPICaller
