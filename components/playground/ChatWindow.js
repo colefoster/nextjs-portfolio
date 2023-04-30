@@ -60,7 +60,7 @@ function ChatWindow(props) {
         {/**In order to get the classes to be included in the build */}
         <div className="hidden bg-red-500 bg-green-500 bg-orange-500 bg-black bg-blue-500 "/>
 
-        <div className="flex-1   sm:pb-4 justify-between  border-black border-2 bg flex flex-col h-1/2 ">
+        <div className="flex-1   sm:pb-4 justify-between  border-black border-2 bg flex flex-col ">
             <div className="flex text-center sm:items-center justify-between py-3 sm:px-6 border-b-2 border-gray-200 bg-indigo-700">
                 <div className="relative flex items-center space-x-3">
                     <div className="relative h-20 w-20 ml-2">
@@ -89,13 +89,13 @@ function ChatWindow(props) {
                     
                 </div>
             </div>
-            <div id="messages" className=" h-80  max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-indigo-900">
+            <div id="messages" className="   max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-indigo-900">
             {userMessages.map((message, index) => {
                 return (
                 <div key={`div1-${index}`}>
                     <div className="chat-message"  >
                         <div className="flex items-end justify-end">
-                            <div className="flex flex-col space-y-2 text-lg max-w-xs mx-2 order-0 items-end -translate-y-4">
+                            <div className="flex flex-col space-y-2 text-lg max-w-md mx-2 order-0 items-end -translate-y-4">
                                 <div><span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">{message}</span></div>
                             </div>
                                 <svg className="h-16 " xmlns="http://www.w3.org/2000/svg" viewBox="1 0 10 11"><text y=".9em" fontSize="9">{settings.userIcon}</text></svg>
@@ -103,9 +103,9 @@ function ChatWindow(props) {
                         </div>
                     <div className="chat-message">
                         <div className="flex items-end">
-                            <div className="flex flex-col mt-3 space-y-2 text-lg max-w-xs mx-2 order-1 items-start -translate-y-4">
+                            <div className="flex flex-col mt-3 space-y-2 text-lg max-w-md mx-2 order-1 items-start -translate-y-4">
                                 <div>
-                                    <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none  bg-gray-300 text-gray-600">
+                                    <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none  bg-gray-300 text-gray-600 whitespace-pre-wrap">
                                     {assistantMessages[index] === undefined ? (
                                         <ReactAnimatedEllipsis 
                                         fontSize="2rem"

@@ -20,9 +20,9 @@ function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,
               prompt:prompt,
             }
           });
-          console.log(response.data.completion)
+          console.log(response.data.completion.choices[0].message.content)
           
-          const assistantMessage = (response.data.completion);
+          const assistantMessage = (response.data.completion.choices[0].message.content);
           // Update the assistantMessages state with the API response
           setAssistantMessages([...assistantMessages, assistantMessage]);
 
