@@ -89,7 +89,7 @@ function ChatWindow(props) {
                     
                 </div>
             </div>
-            <div id="messages" className="   max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-indigo-900">
+            <div id="messages" className=" h-96  max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-indigo-900">
             {userMessages.map((message, index) => {
                 return (
                 <div key={`div1-${index}`}>
