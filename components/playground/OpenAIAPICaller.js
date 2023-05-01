@@ -40,6 +40,7 @@ function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,
 
     async function fetchResponse() {
       const message = createMessageObject(userMessage);
+      console.log(message);
         try {
           const response = await axios.post("/api/openai", {
             

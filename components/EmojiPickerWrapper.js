@@ -26,6 +26,7 @@ const EmojiPickerWrapper = ({ onEmojiClick, defaultValue, size, extraClasses} ) 
 
   if(size === 'small') {
     buttonSize='xl';
+    width = 350;
   }
   else if(size === 'medium') {
     buttonSize='2xl';
@@ -50,8 +51,8 @@ const EmojiPickerWrapper = ({ onEmojiClick, defaultValue, size, extraClasses} ) 
         width={width}
         onEmojiClick={handleEmojiClick} 
         previewConfig={{
-             defaultCaption: "Pick one!",
-             defaultEmoji: "1f92a"// 
+             defaultCaption: `Change This Personality's Icon!`,
+             defaultEmoji: defaultValue.codePointAt(0).toString(16)// 
            }}
         emojiStyle={EmojiStyle.NATIVE}/>
       </div>

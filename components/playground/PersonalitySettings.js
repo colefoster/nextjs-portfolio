@@ -37,8 +37,8 @@ function PersonalitySettings(props) {
             </svg>
         </button>
 
-        <div className={`${showSettings ? '' :'hidden'} z-20 items-center text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-3/4
-        w-96 h-auto p-6 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 
+        <div className={`${showSettings ? '' :'hidden'} z-20 items-center text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+       w-11/12 max-w-screen h-auto p-6 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 
          text-xl`}>
             {/** X in the top right corner to close */}
             <button type="button" onClick={handleGearClick} className="absolute top-3 right-5 inline-flex items-center 
@@ -54,7 +54,7 @@ function PersonalitySettings(props) {
                 </svg>
             </button>
 
-            <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 underline dark:text-white">
+            <h5 className="mb-4 mt-4 text-2xl font-bold tracking-tight text-gray-900 underline dark:text-white">
                 {settings.personalities[settings.selectedPersonality].name} Settings
             </h5>
 
@@ -62,24 +62,24 @@ function PersonalitySettings(props) {
             <div className="flex flex-col justify-center ">
                 <div className="flex">
                     <label className="mr-2 mb-4">Name:</label>
-                    <input type="text" className="absolute right-6 w-44 text-black h-8 border border-gray-300 rounded-lg" onChange={handleNameChange} value={settings.personalities[settings.selectedPersonality].name}/>
+                    <input type="text" className="absolute right-6 w-56 pl-1 text-black h-8 border border-gray-300 rounded-lg" onChange={handleNameChange} value={settings.personalities[settings.selectedPersonality].name}/>
                 </div>
                 <div className="flex ">
                     <label className="mr-2 mb-10">Icon:</label>
                     <div className="absolute right-6 -translate-x-1/2">
-                        <EmojiPickerWrapper extraClasses="-translate-x-3/4" defaultValue={settings.personalities[settings.selectedPersonality].icon} onEmojiClick={handleEmojiClick} />
+                        <EmojiPickerWrapper extraClasses="-translate-x-3/4" size="small" defaultValue={settings.personalities[settings.selectedPersonality].icon} onEmojiClick={handleEmojiClick} />
                     </div>
                 </div>
                 <div className="">
                     <label className="mr-2 ">System Prompt:</label>
                 </div>
                 <div>
-                <textarea id="message" rows="4" className="block p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                onChange={handleSystemPromptChange} defaultValue={settings.personalities[settings.selectedPersonality].systemPrompt}></textarea>
+                <textarea  rows="5" className="block p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                onChange={handleSystemPromptChange} readOnly={false} value={systemPrompt}></textarea>
 
                 {/** Button to submit update of system prompt */}
                 <button type="button" onClick={handleSystemPromptUpdate} className="mt-4 mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Save
+                    Update Prompt
                 </button>
                     
 

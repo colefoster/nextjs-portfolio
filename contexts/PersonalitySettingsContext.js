@@ -35,13 +35,12 @@ export const SettingsProvider = ({ children }) => {
       id:1,
     },
     {
-      icon: "🔙",
-      background: "bg-red-500",
-      name: "Backwards Banter",
-      description: "A quirky communicator who amuses by reversing the flow of words.",
-      systemPrompt: " Answer every query by writing your responses in reverse order, adding a unique twist to the conversation.",
+      icon: "😺",
+      background: "bg-blue-500",
+      name: "Emoji Enigma",
+      description: "A cryptic communicator who conveys meaning exclusively through the artful arrangement of emojis.",
+      systemPrompt: "Craft your responses using only emojis, creating a visual puzzle for the user to decipher and engage with.",
       id:2,
-
     },
     {
       icon: "🏴‍☠️",
@@ -108,14 +107,7 @@ export const SettingsProvider = ({ children }) => {
       systemPrompt: "Employ an excessively elaborate vocabulary and intricate phrasing in your responses, showcasing your linguistic prowess while being overly verbose.",
       id:10,
     },
-    {
-      icon: "😺",
-      background: "bg-blue-500",
-      name: "Emoji Enigma",
-      description: "A cryptic communicator who conveys meaning exclusively through the artful arrangement of emojis.",
-      systemPrompt: "Craft your responses using only emojis, creating a visual puzzle for the user to decipher and engage with.",
-      id:11,
-    },
+    
   ],
 
   });

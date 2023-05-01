@@ -3,7 +3,7 @@ function Badges() {
     //This component displays a large number of badges for fun
     //Display random badges
     return (
-       <div className="flex  justify-center">
+       <div className="flex flex-wrap justify-center">
 
         {/**Below are as many different shields.io badges as I could find */}
         <img src="https://img.shields.io/badge/Netlify-Deployed-blue" alt="Netlify Deployed" className="mx-1 my-1"/>

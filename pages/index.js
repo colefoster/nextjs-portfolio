@@ -10,7 +10,7 @@ import { useSettings } from "../contexts/PersonalitySettingsContext";
 export default function Home() {
   const { settings, updateSettings } = useSettings();
   return (
-    <div className=" h-screen bg-purple-900 text-white">
+    <div className=" min-h-screen bg-purple-900 text-white">
       <Head>
         <title>Cole Foster</title>
         

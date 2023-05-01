@@ -51,8 +51,8 @@ hr {
 }
 
 /* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 15px;
+main::-webkit-scrollbar {
+  display: none;
 }
 
 *::-webkit-scrollbar-track {

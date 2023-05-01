@@ -48,7 +48,7 @@ function ChatWindow(props) {
         inputBox.value = '';                                  // clear the input box
 
         setTimeout(() => {chatWindow.scrollTo({          // scroll down the chat window
-            top: 999999999,
+            top: 999999,
             behavior: 'smooth',
 
           });}, 200);
@@ -87,7 +87,6 @@ function ChatWindow(props) {
                         <div className="text-2xl mt-1 flex items-center">
                         <span className="text-white mr-3 text-center">{settings.personalities[settings.selectedPersonality].name}</span>
                         </div>
-                        <span className="text-lg text-gray-300">{settings.personalities[settings.selectedPersonality].description}</span>
                     </div>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -96,21 +95,22 @@ function ChatWindow(props) {
                     
                 </div>
             </div>
-            <div id="messages" className=" h-96  max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-indigo-900">
+            <div id="messages" className=" h-96  max-h-96 space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-indigo-900 align-bottom">
+            
             {userMessages.map((message, index) => {
                 return (
                 <div key={`div1-${index}`}>
                     <div className="chat-message"  >
                         <div className="flex items-end justify-end">
-                            <div className="flex flex-col space-y-2 text-lg max-w-md mx-2 order-0 items-end -translate-y-4">
-                                <div><span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">{message}</span></div>
+                            <div className="flex flex-col space-y-2 text-lg max-w-sm mx-2 order-0 items-end -translate-y-4">
+                                <div><span className="px-4 py-2 mt-4 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">{message}</span></div>
                             </div>
                                 <svg className="h-16 " xmlns="http://www.w3.org/2000/svg" viewBox="1 0 10 11"><text y=".9em" fontSize="9">{settings.userIcon}</text></svg>
                             </div>
                         </div>
                     <div className="chat-message">
                         <div className="flex items-end">
-                            <div className="flex flex-col mt-3 space-y-2 text-lg max-w-md mx-2 order-1 items-start -translate-y-4">
+                            <div className="flex flex-col mt-3 space-y-2 text-lg max-w-sm mx-2 order-1 items-start -translate-y-4">
                                 <div>
                                     <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none  bg-gray-300 text-gray-600 whitespace-pre-wrap">
                                     {assistantMessages[index] === undefined ? (

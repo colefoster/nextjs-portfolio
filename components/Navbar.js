@@ -20,9 +20,9 @@ function Navbar({}) {
     return (
         <>
         
-        <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+        <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 ">
 
-          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" className="flex items-center">
             <svg className='w-10 h-10 text-white fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="15 0 100 100"><text y=".9em" fontSize="90">{settings.userIcon}</text></svg>
 

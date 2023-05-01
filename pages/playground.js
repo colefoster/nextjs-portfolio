@@ -10,7 +10,7 @@ const PlaygroundPage = () => {
  
 
   return (
-    <div className="h-screen bg-purple-900 text-white">
+    <div className="min-h-screen bg-purple-900 text-white overflow-scroll">
       <Head>
         <title>ChatBot Playground</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😻</text></svg>" />
@@ -19,14 +19,13 @@ const PlaygroundPage = () => {
       <Navbar />
 
       <main>
-        <Header title="Chatbot Personality Chat" />
+        <Header title="AI Playground" />
 
         <hr />
         <div className="text-white text-5xl text-center font-bold ">
           <Playground />
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
