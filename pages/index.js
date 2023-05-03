@@ -17,12 +17,14 @@ export default function Home() {
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😻</text></svg>"/>
       </Head>
     <Navbar />
-      <main> 
+      <main className="flex align-middle items-center"> 
         <Header title="Cole Foster" />
        
-        <hr />
-        <Link href="/playground" > <div className="text-4xl rounded-full m-20 hover:bg-gradient-to-l hover:from-pink-700 hover:to-fuchsia-700  bg-gradient-to-r hover:shadow-2xl from-pink-500 to-fuchsia-500 text-center font-bold hover:text-slate-600 text-white p-10">Check out my AI Personality Playground</div></Link>
-        <hr />
+        <br/>
+        <Link href="/playground" > <div className="btn btn-active btn-primary sm:btn-sm md:btn-md lg:btn-lg glass">Check out my AI Personality Chatbots</div></Link>
+        <br/>
+        <Link href="/reddit-user"> <div className="btn btn-active btn-accent sm:btn-sm md:btn-md lg:btn-lg glass">Check out my reddit user toxicity detector</div></Link>
+
         <div className="text-white text-5xl text-center font-bold -z-100" >
           <JeopardyWidget/>
         </div>

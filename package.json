@@ -19,16 +19,20 @@
   },
   "dependencies": {
     "@swc/helpers": "^0.5.0",
+    "@tensorflow-models/toxicity": "^1.2.2",
     "@tensorflow/tfjs": "^4.4.0",
     "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
     "cypress": "^10.0.3",
+    "daisyui": "^2.51.6",
+    "dotenv": "^16.0.3",
     "emoji-picker-react": "^4.4.9",
     "html-react-parser": "^3.0.16",
     "next": "^13.3.1",
     "openai": "^3.2.1",
+    "python-shell": "^5.0.0",
     "react": "^18.2.0",
     "react-animated-ellipsis": "^1.0.0",
-    "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-simple-badges": "^4.2.0",
     "react-tsparticles": "^2.9.3",
@@ -40,7 +44,7 @@
     "eslint-config-next": "^13.3.1",
     "netlify-plugin-cypress": "2.2.1",
     "postcss": "^8.4.23",
-    "sass": "^1.62.0",
-    "tailwindcss": "^3.3.1"
+    "tailwind-scrollbar": "^3.0.0",
+    "tailwindcss": "^3.3.2"
   }
 }

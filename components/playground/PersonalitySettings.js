@@ -37,8 +37,8 @@ function PersonalitySettings(props) {
             </svg>
         </button>
 
-        <div className={`${showSettings ? '' :'hidden'} z-20 items-center text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-       w-11/12 max-w-screen h-auto p-6 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 
+        <div className={`${showSettings ? '' :'hidden'} z-20 items-center text-center absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2
+        w-80 max-w-screen h-auto p-6 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 
          text-xl`}>
             {/** X in the top right corner to close */}
             <button type="button" onClick={handleGearClick} className="absolute top-3 right-5 inline-flex items-center 

@@ -41,7 +41,7 @@ function DropdownRadio() {
       
       <div
         id="dropdownRadio"
-        className={`${showDropdown ? '' : ' hidden '} h-96 overflow-scroll -translate-x-1/2 left-1/2 w-11/12 absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}>
+        className={`${showDropdown ? '' : ' hidden '} h-96 overflow-scroll -translate-x-1/2 left-1/2 w-96 absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}>
         <ul className="p-3 space-y-1 text-md text-gray-700 dark:text-gray-200 " aria-labelledby="dropdownRadioHelperButton">
           
           {settings.personalities.map((option, index) => (
