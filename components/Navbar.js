@@ -50,7 +50,7 @@ function Navbar({}) {
                             <a href="/emojis" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Emojis</a>
                           </li>
                           <li>
-                            <a href="/tf" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">TensorFlow Examples</a>
+                            <a href="/reddit-user" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reddit Toxicity</a>
                           </li>
                         </ul>
                         <div className="py-1">
