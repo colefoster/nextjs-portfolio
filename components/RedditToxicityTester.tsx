@@ -180,7 +180,6 @@ function RedditToxicityTester() {
             {loadingComments && !loadingUser &&(
                 <>
                 <br/>
-                <progress className="progress progress-success w-56" value={loadingPercent} max={comments.length}></progress>
 
                 <div role="status" className='text-center items-center text'>
                     
