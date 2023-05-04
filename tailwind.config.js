@@ -29,6 +29,7 @@ module.exports = {
   plugins: [ 
     require('tailwind-scrollbar'),
     require('daisyui'),
+    require('prettier-plugin-tailwindcss'),
   ],
   mode: 'jit',
 }

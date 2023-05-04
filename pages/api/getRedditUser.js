@@ -3,37 +3,47 @@ export default async function handler(req, res)  {
 
     var username = req.query.username;
     const numComments = req.query.numComments;
+    const offset = req.query.offset || 0;
 
-    if(username === 'random' || username === '[deleted]'){
+    if(username === 'random' || username === '[deleted]' || username === 'AutoModerator' || username === ''){
         username = getRandomUsername();
     }
 
     if (username && numComments) {
            
-        var userJson = await fetch(
+        try{
+            var userJson = await fetch(
             `https://www.reddit.com/user/${username}.json`
-        )
-        var userObject = await userJson.json(); //gets comments from reddits json api
+            )
+            var userObject = await userJson.json(); //gets comments from reddits json api (this is raw json)
+            userObject.data.children= userObject.data.children.splice(0, numComments + offset)
 
-        const userProfile = await fetch(    //scrapes reddit profile
-            `https://www.reddit.com/user/${username}`
-        )
-        const userProfileHtml = await userProfile.text();
 
-        const $ = cheerio.load(userProfileHtml);
-        const avatarImageSrc = $('[alt="User avatar"]').attr('src');
-        const karma = $('[id="profile--id-card--highlight-tooltip--karma"]').text();
-        const cakeDay = $('[id="profile--id-card--highlight-tooltip--cakeday"]').text();
-        userObject.data.children[0].data.avatarImageSrc = avatarImageSrc;
-        userObject.data.children[0].data.karma = karma;
-        userObject.data.children[0].data.cakeDay = cakeDay;
-        
+            const userProfile = await fetch(    //scrapes reddit profile, gets avatar, karma, and cake day
+                `https://www.reddit.com/user/${username}/`
+            )
+            const userProfileHtml = await userProfile.text();
 
-        
+            if(userProfileHtml.includes('User avatar')) console.log('User avatar found')
+            const $ = cheerio.load(userProfileHtml);
+            const avatarImage = $('[alt="User avatar"]')
+            const avatarImageSrc = avatarImage.attr('src');
+            if(!avatarImageSrc) console.log({avatarImage})
+            const karma = $('[id="profile--id-card--highlight-tooltip--karma"]').text();
+            const cakeDay = $('[id="profile--id-card--highlight-tooltip--cakeday"]').text();
+            userObject.data.children[0].data.avatarImageSrc = avatarImageSrc;
+            userObject.data.children[0].data.karma = karma;
+            userObject.data.children[0].data.cakeDay = cakeDay;
 
-        res.status(200).send(userObject);
-       
-      
+            userObject.data.children = userObject.data.children.splice(offset, numComments)
+            res.status(200).send(userObject);
+
+        }
+        catch(error){
+            console.error(error);
+            res.status(500).json({ error: "An error occurred while processing the request." });
+            
+        }     
     }
     else if(username) res.status(400).json({ error: 'numComments is required' });        
     
@@ -75,7 +85,8 @@ function getRandomUsername() {
      */
     const usernames= [
         "fcole",
-        "NOAEL_MABEL","lurkingandstuff","TheKid_BigE","QuiGGz96","exigy1","Clemburger","icydata","BlueeGreen","SerenePotato","hockeydiscussionbot","andy_bmc","my-dicks-sore","FourHockey","kmacedo88","metalhead4","Domesticated_dad","trudenter","Han_Solo_18","poogle","DeathEater91","Eazy-Eid","childofsol","scottyb83","Avko","DreamcastWriter","ifonlyihadaname","catsnotabigdeal","jamsquad87","seasonpasstoeattheas","icybeavertail","russels418teapot","AKShaolin","nas22_","Anerythristic","Moosethought","CarolinaWren15","UpstairsFlat4634","ikolp0987","InsectTop618","justhereformemes8","nah46","mikhailovechkin","MadFonzi","Mikeismyike","dumpandchange","NeonJaguars","ClubMeSoftly","Isthatmyhelmet","Montsegur97","gs181","wererealcheesepeople","toronto_programmer","MoustacheMayhem","RmfCountered","BrightAttack","Bigboyrickx","datsyuks_deke","kgalliso","Dull-Broccoli","vwman18","tranquility1515","bigdinnerbox","Tybackwoods00","thebausher","Dorksim","ThatLineOfTriplets","MRFINEWINE1","hippeteboy","Razziks13","ILikeCoffeeDaily","sw04ca","clevergirls_","The_RoyalPee","AllGoaliesAreTrash","ghost_curse123","Naive-Moose-2734","Chuckolator","doctortre","passive_fist","CaptainCorranHorn","esaul17","RoadDoggFL","pigeonbobble","Madacon","SAG_Bot","rpgguy_1o1","PacketGain","5xad0w","Sss00099","Tycoon004","ScotticusPrime","crazyphyscoman","DewJew","MeanElevator","colonelkorn12","Additional-Air-7851","AmateurChemistry","FlaGator","TheClawwww7667","Savings_Rub4982","The_Dale_Hunters","diamondfaces","Guest2200","whodiditnaylor","BidensProstate","CorpulentMagistrate","HurricanesFan","joe_broke","DogePerformance","BattleSh33p","bleached_n_tiedyed","guardrya","EBXLBRVEKJVEOJHARTB","TheGapInTysonsTeeth","vshun","looples","morbidmovies","TheBigSm0ke","Cheesy_Pita_Parker","No_Angle_8106","th3D4rkH0rs3","Vegas_Knights","lotturm","HanshinFan","tidalbored","Generazn","DontPokeTheCrab","fattsdomino","bspaghetti","ChonkyWumpus","Infinite-Sleep3527","tomwiIson","nousernamex2","d-cent","dhoomsday","crookedboone","WHATAREWEYELINGABOUT","BlueHarvestJ","xepa105","Imagine1","xswicex","sound_forsomething","tehmlem","McBunnyface","thatsong","FrogmanKouki","Frylok1177","Esg876","senorcementtruck","E-rye","dlax15","rocketrae21","seasterbrook",
+        "The_Bird_King","99_percent_hot_gas","StratTeleBender","Poptoo","SeeBeeJaay","Mommasandthellamas","crankyankee","BrettEskin","CMMGUY1","NewChallGT20","FairlyPoliticked","WACS_On","Beneficial_Gap5934","tryhard1981","purplepowerpete","throwaway-4557338","GlitteringFutures","fj668","ultimis","Underleft_cdiv","EnterByTheNarrowGate","user_1729","jRok57","iamspartacus5339","Wh1te_Rabb1t","alexp8771","ShillinTheVillain","Jades5150","JBoneTX","Hogsrunwild","TrajantheBold","ConnorMc1eod","WeAreEvolving","LetsGoGators23","cheese_weasel22","Ductard","The1Sundown","IHeartSm3gma","Vektor0","5tudent_Loans","Ainz-Ooal-Gown","Kweefus","Frobix444V2","NickMotionless","Dry-Ad-7732","Remote_Presentation6","Marilynsmom","dtyler88","Chewybass1","gsd_dad","swd120","SevereKnowledge","New_Examination_3754","-BluesDeVille-","saltyoldtexan","Agent_Choocho","johnnyg883","PrometheusOnLoud","bruh_wut69","Extra_Suit1637","OrangeCrush229","stablersvu","WhoAmI1138","TheIncredibleHork","AmazingFlightLizard","Krieg413","wollier12","haydenman","thecoolerllcoolJ","Gzhindra","ChadRex1776","Craineiac","redbullcanloader","PupperMartin74","Haolepino1975","thgail","Ambitious_Western_12","soarin_tech","Creative_Ambassador","dom650","ep302549","phanon1666","PerspectiveOk8157","Maurynna368","paulteaches","jedeye121","eclarke10","massiveboner911","Zedakah","depressedskeptic","SaturnBetsy","Powerwagonlife","char-0311","Successful_Warthog58","DarkLordKefka","idgafpb","ForeverChicago","Espressoyourfeelings","blbh0527","kal_houseofel","Practical_Put_3892","funcouple777969","NanoWarrior26","WilyNGA","mwatwe01","xPineappleshrapnelx","Fickle_Panic8649","annoyedboy671","Xpert285","Slartibartfastthe2nd","Keekoo123","JokicThaGod","KommKarl","Yucca12345678","101fng","WizardVisigoth","DrDufmanKnows","skarface6","CARLOS_DANGER638","RedRightReady","theflyz","Dunkin_Ideho","I_really_think_this","Ateapotist1983","Flare4roach","Green-Apple-KingKong","ApprehensiveLaw9060","WholeFoodsMeerkat","midasbadtouch","jc0vd","Major-Blackbird","Sufficient-Goat-962","nicklepimple","aimferdabushes","RedRose_Belmont","bryyantt","JTuck333","Mustermuss","NeoCentristChad","Zachtyl","TheThunderOfYourLife","WreknarTemper","unikornlover","BobBee13","Substantial_Diver_34","sheayde4979","neutralityparty","Jay-jay1","griffteepdx","Anxiouslycalm10","Josh-Lambo-Tudamoon","CrapWereAllDoomed","Deceivement","stratarch","jimhoff","RedditHatesMe75","jondaddy96","YoMomma-IsNice","gunburns88","Flyz_it_dies","Zealousideal-Ad-8042","birdsnap","Mitch_igan","Brandycane1983","DCGuinn",
+
     ]
     const randomUser = usernames[Math.floor(Math.random() * usernames.length)];
     return randomUser;
