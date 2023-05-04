@@ -45,15 +45,12 @@ function RedditToxicityTester() {
         const response = await fetch("/api/getRedditUser?username=" + username + "&numComments=" + numComments +"&offset=" + numComments);
         const data = await response.json();
         setComments(comments => ([...comments, ...data.data.children.filter((comment) => comment.kind === 't1')]));
-        console.log({comments});
-        setLoadingComments(false);
     }
     
   
     useEffect(() => {
       const classifyComments = async () => {
           if (comments !== undefined && comments.length > 0) {
-            console.log({comments});
 
             const toxicityLabels = [
               'identity_attack',
@@ -69,9 +66,9 @@ function RedditToxicityTester() {
             const results = await Promise.all(
               comments.map(async (comment, index) => {
                 console.log({comment})
-                if (comment && comment.data.body && index >= toxicityResults.length) {
+                if (comment && comment.data.body ) {
                   const predictions = await model.classify([comment.data.body]);
-                  setLoadingPercent(Math.round((index / comments.length) * 100));
+                  setLoadingPercent(loadingPercent + 20);
                   console.log({predictions})
                   return predictions.reduce((acc, { label, results }) => {
                     acc[label] = results[0].match ? `${(results[0].probabilities[1] * 100).toFixed(1)}%` : `${(results[0].probabilities[1] * 100).toFixed(1)}%`;
@@ -183,7 +180,7 @@ function RedditToxicityTester() {
             {loadingComments && !loadingUser &&(
                 <>
                 <br/>
-                <progress className="progress progress-success w-56" value={loadingPercent} max="100"></progress>
+                <progress className="progress progress-success w-56" value={loadingPercent} max={comments.length}></progress>
 
                 <div role="status" className='text-center items-center text'>
                     
