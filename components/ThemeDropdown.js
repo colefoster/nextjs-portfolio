@@ -10,6 +10,7 @@ const ThemeDropdown = ({ changeTheme, theme }) => {
         <label tabIndex={0} className="btn m-3">Theme: {theme}</label>
         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
             {themeList.map((currentTheme, i) => (
+                currentTheme !== 'synthwave84' && 
                 <li key={i} value={currentTheme} onClick={()=>{changeTheme(currentTheme)}}>
                     <a>
                         {currentTheme}

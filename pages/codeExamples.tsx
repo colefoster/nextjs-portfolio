@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import CodeBlock from '../components/CodeBlock';
 import ThemeDropdown from '../components/ThemeDropdown';
+import MultiCodeBlock from '../components/MultiCodeBlock';
 const codeExamples = () => {
     const [theme, setTheme] = useState("dracula");
 
@@ -43,15 +44,16 @@ public class HelloWorld {
                 <Header title="Code Examples"/>
                 
             </div>
-            <div className='flex justify-end'>
+            <div className='flex justify-center'>
                 <ThemeDropdown theme={theme} changeTheme={setTheme} />
             </div>
-
-            <CodeBlock code={sampleJavaCode} language={"java"} theme={theme} />
-
+            <MultiCodeBlock theme={theme} >
+                <CodeBlock code={sampleJavaCode} filename='sample.java'language={"java"} theme={theme} />
+                <CodeBlock code={sampleJSCode} filename='sample.js' language={"js"} theme={theme} />
+            </MultiCodeBlock>
             <br/>
 
-            <CodeBlock code={sampleJSCode} language={"js"} theme={theme} />
+            
 
         </main>
 
