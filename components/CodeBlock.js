@@ -36,7 +36,7 @@ return (
         language={language}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre style={style}>
+          <pre style={style} className=' overflow-scroll'>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>
                 <span className={`mr-4 text-[#${textColor}] `}>{i + 1}</span>
