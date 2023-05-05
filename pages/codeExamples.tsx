@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 import CodeBlock from '../components/CodeBlock';
 import ThemeDropdown from '../components/ThemeDropdown';
 const codeExamples = () => {
-    const [theme, setTheme] = useState("shadesOfPurple");
+    const [theme, setTheme] = useState("dracula");
 
    const sampleJSCode = `
    const GroceryItem: React.FC<GroceryItemProps> = ({ item }) => {
@@ -26,7 +27,7 @@ public class HelloWorld {
 `.trim();
 
     return (
-        <div className="min-h-screen bg-purple-900">
+        <div className="min-h-screen bg-purple-900 text-white">
 
         <Head>
             <title>Code Examples</title>
@@ -39,12 +40,12 @@ public class HelloWorld {
 
         <main>
             <div className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-                <h1 className="text-6xl font-bold">
-                    Code Examples
-                </h1>
-
+                <Header title="Code Examples"/>
+                
             </div>
-            <ThemeDropdown changeTheme={setTheme} />
+            <div className='flex justify-end'>
+                <ThemeDropdown theme={theme} changeTheme={setTheme} />
+            </div>
 
             <CodeBlock code={sampleJavaCode} language={"java"} theme={theme} />
 

@@ -7,9 +7,10 @@ import { Highlight, themes, Prism} from "prism-react-renderer";
 require("prismjs/components/prism-java")
 
 const CodeBlock = ({ code, language, theme }) => {
-    
+    console.log(themes[theme].plain.backgroundColor)
   return (
-    <div className="bg-gray-800 rounded p-4">
+    //themes[theme].plain.backgroundColor === #282A36
+    <div className={`bg-[${themes[theme].plain.backgroundColor}] p-6 rounded-3xl`}>
       <Highlight
         
         theme={themes[theme]}
@@ -20,7 +21,7 @@ const CodeBlock = ({ code, language, theme }) => {
           <pre style={style}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>
-                <span className='mr-4'>{i + 1}</span>
+                <span className='mr-4 '>{i + 1}</span>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token })} />
                 ))}
