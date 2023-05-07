@@ -91,27 +91,23 @@ const BrainFoo = ({iconTheme}) => {
     function highlightCharacter(text, index) {
         const codePoints = [...text];
         const before = codePoints.slice(0, index).join('');
-        const char = codePoints[index];
+        const char = codePoints[index] || "";
         const after = codePoints.slice(index + 1).join('');
 
         return before + "▶"  + char + "◀" + after;
     }
     const bfCompiler = async(inputCode, input = "") => {
-        const code = inputCode.replace(/[^<>+\-.,\[\]]/g, "");
-        console.log("running code:" + code)
+        const localCode = inputCode.replace(/[^<>+\-.,\[\]]/g, "");
         let localData = data;
-        let dataPointer = 0;
+        let dataPointer = pointerPosition;
         let inputPointer = 0;
         let codePointer = 0;
         let newOutput = "";
         const stack = [];
         
-        while (codePointer < code.length) {
-            await new Promise((r) => setTimeout(r, 50));
-            setCodePosition(codePointer);
-            setPointerPosition(dataPointer);
-            setData(localData);
-          const command = code[codePointer];
+        while (codePointer < localCode.length && code.length > 0) {
+            
+          const command = localCode[codePointer];
           switch (command) {
            
             case ">":
@@ -140,8 +136,8 @@ const BrainFoo = ({iconTheme}) => {
                 let bracketCount = 1;
                 while (bracketCount > 0) {
                   codePointer++;
-                  if (code[codePointer] === "[") bracketCount++;
-                  if (code[codePointer] === "]") bracketCount--;
+                  if (localCode[codePointer] === "[") bracketCount++;
+                  if (localCode[codePointer] === "]") bracketCount--;
                 }
               } else {
                 stack.push(codePointer);
@@ -156,8 +152,13 @@ const BrainFoo = ({iconTheme}) => {
               break;
           }
           codePointer++;
+          setCodePosition(codePointer);
+            setPointerPosition(dataPointer);
+            setData(localData);
+            setOutput(newOutput);
+          await new Promise((r) => setTimeout(r, 100));
         }
-        setOutput(newOutput);
+        
     };
     const removeEmojis=(code) => {
         const cleaned = code.replaceAll(icons.Basic.left, "<").replaceAll(icons.Basic.right, ">").replaceAll(icons.Basic.plus, "+").replaceAll(icons.Basic.minus, "-").replaceAll(icons.Basic.output, ".").replaceAll(icons.Basic.input, ",").replaceAll(icons.Basic.startLoop, "[").replaceAll(icons.Basic.endLoop, "]")
@@ -194,7 +195,8 @@ const BrainFoo = ({iconTheme}) => {
                 Load</button> 
                 <ul tabIndex={0} ref={loadMenuRef} className={`${showLoadMenu ? 'block ' : 'hidden'} z-20 -translate-x-1/2 absolute menu p-2 shadow bg-base-100 rounded-box w-52`}>
                     <li key="Hello World"><a onClick={_=> {
-                        setCode(addEmojis("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.", iconSet));}}>Hello World</a></li>
+                        setCode(addEmojis(`>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<+
+                        +.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.`, iconSet));}}>Hello World</a></li>
                 </ul>
                        
         </div>
@@ -272,6 +274,7 @@ const BrainFoo = ({iconTheme}) => {
                 setOutput("");
                 setCodePosition(0);
                 setPointerPosition(0)}}>Clear</button>
+                
         
             
         </div>
@@ -314,6 +317,7 @@ const BrainFoo = ({iconTheme}) => {
                 <button className="btn lg:btn-lg text-3xl" onClick={() =>{
                         setCode(code + icons[iconSet].right);
                         if(runLive){
+                            console.log("running")
                         runCode(icons.Original.right)
                     }
                 } }>{icons[iconSet].right}</button>

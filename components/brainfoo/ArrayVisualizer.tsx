@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 const ScrollingBoxes = ({data, index}) => {
-    
-
   
-    
-
+  //index is the current index of the pointer, or the index that the visualization is centered on
     return (
       <div className="flex items-center justify-center">
         <div className="flex overflow-hidden items-center ">
