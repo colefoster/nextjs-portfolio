@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as toxicity from '@tensorflow-models/toxicity'
-import CommentCard from '@components/CommentCard'
+import CommentCard from '@components/redditToxicity/CommentCard'
 import 'tailwindcss/tailwind.css'
 import 'daisyui/dist/full.css'
 import dynamic from 'next/dynamic';

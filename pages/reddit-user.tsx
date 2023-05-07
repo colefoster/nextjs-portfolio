@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import Navbar from '../components/Navbar'
 
-import RedditToxicityTester from '@components/RedditToxicityTester'
+import RedditToxicityTester from '@components/redditToxicity/RedditToxicityTester'
 
 export default function RedditUser() {
  

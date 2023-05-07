@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-import CodeBlock from '../components/CodeBlock';
-import ThemeDropdown from '../components/ThemeDropdown';
-import MultiCodeBlock from '../components/MultiCodeBlock';
+import CodeBlock from '../components/examples/CodeBlock';
+import ThemeDropdown from '../components/examples/ThemeDropdown';
+import MultiCodeBlock from '../components/examples/MultiCodeBlock';
 const codeExamples = () => {
     const [theme, setTheme] = useState("dracula");
 

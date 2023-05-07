@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-import BrainFoo from '../components/BrainFoo';
+import BrainFoo from '../components/brainfoo/BrainFoo';
 
 const brainfoo = () => {
 
@@ -10,10 +10,10 @@ const brainfoo = () => {
   
 
     return (
-        <div className="min-h-screen bg-purple-900 text-white">
+        <div className="h-screen bg-purple-900 text-white background w-screen">
 
         <Head>
-            <title>Code Examples</title>
+            <title>Brainfoo Sim</title>
             <meta
             name="BrainFoo"
             content="Custom BrainF*** Compiler"/>
@@ -28,9 +28,9 @@ const brainfoo = () => {
                 </div>
                 
             </div>
-            <div className='mt-4'>
+            <div className='mt-3'>
                 <br/>
-                <BrainFoo />
+                <BrainFoo iconTheme="Basic"/>
             </div>
 
             

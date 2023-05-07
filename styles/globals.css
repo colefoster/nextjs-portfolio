@@ -13,9 +13,12 @@ body {
 * {
   box-sizing: border-box;
 }
-
+.background {
+  width:100%;
+}
 main {
-  padding: 2rem 20px;
+  
+  padding: 1rem 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,3 +68,8 @@ hr {
   border-radius: 14px;
   border: 0px solid black;
 }
+
+
+
+
+
