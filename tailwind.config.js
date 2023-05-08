@@ -21,10 +21,6 @@ module.exports = {
     "./components/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-
-  darkMode: 'media', // or 'media' or 'class'
-
   theme: {
     extend: {
       keyframes: {
@@ -46,6 +42,5 @@ module.exports = {
     require('daisyui'),
     require('prettier-plugin-tailwindcss'),
   ],
-  mode: 'jit',
 }
 

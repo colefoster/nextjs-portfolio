@@ -14,7 +14,12 @@ body {
   box-sizing: border-box;
 }
 .background {
-  width:100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 main {
   
@@ -67,47 +72,4 @@ hr {
   background-color: rgb(9, 28, 41);
   border-radius: 14px;
   border: 0px solid black;
-}
-/* styles.css */
-
-.slide-left {
-  @apply transform;
-  animation: slide-left 0.3s ease-in-out forwards;
-}
-
-.slide-right {
-  @apply transform;
-  animation: slide-right 0.3s ease-in-out forwards;
-}
-
-@keyframes slide-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slide-right {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.fade {
-  @apply opacity-0;
-  animation: fade 0.3s ease-in-out forwards;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }

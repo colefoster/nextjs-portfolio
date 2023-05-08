@@ -266,7 +266,7 @@ const BrainFoo = ({iconTheme}) => {
 
 
         <div className="">
-            <button className="btn btn-success btn-sm ml-10" onClick={_=>runCode(removeEmojis(code))}>Run</button>
+            <button className="btn btn-success btn-sm mr-20" onClick={_=>runCode(removeEmojis(code))}>Run</button>
             <button className="btn btn-info btn-sm " onClick={() => setCode(code.slice(0,code.length-2))}>Delete</button>
             <button className="btn btn-error btn-sm " onClick={() => {
                 setCode("");
