@@ -1,42 +1,44 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState} from "react";
+import Webcam from "react-webcam";
 
-const CameraComponent = () => {
-  const [stream, setStream] = useState(null);
-  const videoRef = useRef(null);
 
-  const startVideo = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      setStream(stream);
-    } catch (err) {
-      console.error("Error: " + err);
-    }
-  };
 
-  useEffect(() => {
-    if (stream && videoRef.current && !videoRef.current.srcObject) {
-      videoRef.current.srcObject = stream;
-    }
-    return () => {
-      if (stream) {
-        stream.getTracks().forEach((track) => {
-          track.stop();
-        });
-      }
-    };
-  }, [stream]);
-
+const WebcamCapture = () => {
+  const [image, setImage] = useState(null);
+  const [direction, setDirection] = useState("user");
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <button
-        onClick={startVideo}
-        className="mb-4 btn btn-primary"
+    <div className="flex flex-col items-center justify-center align-middle">
+  <Webcam
+    audio={false}
+    height={720}
+    screenshotFormat="image/jpeg"
+    width={1280}
+    videoConstraints={{
+      width: 1280,
+      height: 720,
+      facingMode: direction
+    }}
+  >
+    {({ getScreenshot }) => (
+      <div className="my-4 btn"
+        onClick={() => {
+          setImage(getScreenshot());
+        }}
       >
-        Use Device Camera
-      </button>
-      <video ref={videoRef} autoPlay playsInline className="max-h-full" />
-    </div>
-  );
+        Capture photo
+      </div>
+    )}
+  </Webcam>
+        <br/>
+  <div className="btn "
+        onClick={() => {
+          setDirection(direction === "user" ? "environment" : "user");
+        }}
+      >
+        Swap Camera
+      </div>
+  {image && <img src={image} />}</div>
+    );
 };
 
-export default CameraComponent;
+export default WebcamCapture;

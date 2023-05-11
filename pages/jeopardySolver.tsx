@@ -27,9 +27,9 @@ const NewJeopardy = () => {
             
             <Navbar />
 
-            <main className="flex items-center my-3 align-middle"> 
-                <input type="file" className="w-full max-w-xs mb-4 file-input file-input-bordered file-input-primary" onChange={handleFileChange} />
-                <CameraVideo />
+            <main className="flex items-center align-middle"> 
+                <input type="file" className="w-full max-w-xs file-input file-input-bordered file-input-primary" onChange={handleFileChange} />
+                <CameraVideo  />
                 {imageSrc && (
                   <div className="flex items-center justify-center w-full overflow-hidden border h-1/2">
                     <img 

@@ -25,7 +25,7 @@ const OCR = ({source}) => {
     }
   }, [source]);
 
-  return <div className='m-5 text-xl font-medium text-center'>{!source && "Select Image"}
+  return <div className='m-5 text-xl font-medium text-center'>{!source && "No image to analyze"}
                 {source && !text && <progress className="w-56 progress progress-primary" value={progress} max="100"></progress>}
                 {source && text && (text)}</div>;
 };
