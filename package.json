@@ -59,6 +59,7 @@
     "react-tsparticles": "^2.9.3",
     "react-webcam": "^7.0.1",
     "rgb-hex": "^4.0.1",
+    "tabler-icons-react": "^1.56.0",
     "tesseract.js": "^4.0.5",
     "tsparticles": "^2.9.3"
   },

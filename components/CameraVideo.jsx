@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import Webcam from "react-webcam";
-
+import { CameraRotate } from 'tabler-icons-react';
+              
 
 
 const WebcamCapture = () => {
   const [image, setImage] = useState(null);
   const [direction, setDirection] = useState("user");
   return (
-    <div className="flex flex-col items-center justify-center align-middle">
+    <div className="relative">
   <Webcam
     audio={false}
     height={720}
@@ -27,17 +28,24 @@ const WebcamCapture = () => {
       >
         Capture photo
       </div>
+      
     )}
   </Webcam>
         <br/>
-  <div className="btn "
+        <div className="absolute top-0 right-0 bg-transparent border-0 btn"
         onClick={() => {
           setDirection(direction === "user" ? "environment" : "user");
         }}
       >
-        Swap Camera
+        <CameraRotate
+    size={48}
+    strokeWidth={1}
+    color={'white'}
+  />
       </div>
-  {image && <img src={image} />}</div>
+  {image && <img src={image} />}
+  
+  </div>
     );
 };
 
