@@ -34,7 +34,7 @@ const CameraComponent = () => {
       >
         Use Device Camera
       </button>
-      <video ref={videoRef} autoPlay className="max-h-full" />
+      <video ref={videoRef} autoPlay playsInline className="max-h-full" />
     </div>
   );
 };
