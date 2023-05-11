@@ -47,12 +47,3 @@ npm run dev
 
 You should now be able to see the project running on your local machine.
 
-## Deploying the Portfolio
-
-For deployment, Next.js recommends using Vercel. It's a great place for deploying Next.js projects. You can check out how to deploy on Vercel [here](https://nextjs.org/docs/deployment).
-
-## Contact
-
-If you want to contact me you can reach me at <your_email@domain.com>.
-
-## License

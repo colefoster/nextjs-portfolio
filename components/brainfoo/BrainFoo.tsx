@@ -178,7 +178,7 @@ const BrainFoo = ({iconTheme}) => {
     };
       return (
         
-        <div>
+        <div className="">
 
         <div className="flex items-center justify-center text-xl mb-4">
             <div className={`${output.length > 0 ? '' : 'text-slate-400' } textarea textarea-bordered textarea-xs w-full max-h-14 max-w-xs text-xl`} >
@@ -258,7 +258,7 @@ const BrainFoo = ({iconTheme}) => {
         
         
         {/**CODE TEXT AREA */}
-        <div  className={`${output.length > 0 ? '' : 'text-slate-400' } textarea textarea-bordered textarea-md w-full max-w-full text-lg`} >
+        <div  className={`${output.length > 0 ? '' : 'text-slate-400' } textarea overflow-auto textarea-bordered textarea-md w-full max-w-full text-lg`} >
             {code.length > 0 && highlightCharacter(addEmojis(code, iconSet), codePosition)}
             {code.length == 0 && "Code"}
 

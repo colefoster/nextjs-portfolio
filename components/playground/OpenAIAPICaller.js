@@ -39,15 +39,15 @@ function OpenAIAPICaller({ userMessage, setAssistantMessages, assistantMessages,
     }
 
     async function fetchResponse() {
+      console.log({messages})
       const message = createMessageObject(userMessage);
-      console.log(message);
+      console.log({message});
         try {
           const response = await axios.post("/api/openai", {
             
               messages: message,
             
           });
-          console.log(response.data.completion.choices[0].message.content)
           
           const assistantMessage = (response.data.completion.choices[0].message.content);
           // Update the assistantMessages state with the API response

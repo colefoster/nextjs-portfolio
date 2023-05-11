@@ -28,7 +28,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/_app.tsxx", "components/CameraVideo.jsx"  ],
   "exclude": [
     "node_modules"
   ]

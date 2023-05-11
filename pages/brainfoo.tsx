@@ -10,7 +10,7 @@ const brainfoo = () => {
   
 
     return (
-        <div className="h-screen bg-purple-900 text-white background w-screen">
+        <div className=" text-white background ">
 
         <Head>
             <title>Brainfoo Sim</title>
@@ -23,7 +23,7 @@ const brainfoo = () => {
 
         <main>
             <div className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-            <div className="tooltip  tooltip-bottom" data-tip="A Custom BrainF*ck Compiler using different emoji sets">
+            <div className="tooltip  tooltip-bottom" data-tip="A Custom BrainF*** Compiler using different emoji sets">
                 <Header title="BrainFoo"/>
                 </div>
                 
